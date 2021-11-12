@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app" class="main text-center">
+        <h2>ToDo List</h2>
+        <div class="container">
+            <form @submit.prevent="add" @keydown.esc="reset">
+                <input type="text" placeholder="Enter your task" v-model="typeTodo" ref="focusInp">
+            </form>
+            <div class="button" v-on:click="add">Add task</div>
+            <p class="clone">
+                {{typeTodo}}
+            </p>
+        </div>
+        <ul>
+            <li v-for="todo in todos.slice().reverse()">
+                <article>
+                    <a v-on:click="remove(todo)">x</a> {{todo}}
+                </article>
+            </li>
+        </ul>
+    </div>
+
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="./assets/js/main.js"></script>
+</body>
+
+</html>
